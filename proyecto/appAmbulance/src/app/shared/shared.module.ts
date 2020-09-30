@@ -7,11 +7,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { HeadlineComponent } from './components/headline/headline.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
-  declarations: [HeadlineComponent],
-  imports: [CommonModule],
+  declarations: [HeadlineComponent, TableComponent],
+  imports: [CommonModule, MatTableModule],
   exports: [
     MatSidenavModule,
     MatToolbarModule,
@@ -20,7 +23,10 @@ import { HeadlineComponent } from './components/headline/headline.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
+    MatTableModule,
     HeadlineComponent,
+    TableComponent,
   ],
 })
 export class SharedModule {}

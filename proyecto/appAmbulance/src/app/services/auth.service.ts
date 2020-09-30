@@ -5,6 +5,7 @@ import { StorageRepository } from '../repositories/storage.repository';
 import { IResponse } from '../interfaces/response.interface';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class AuthService {
 
   login(user: User): void {
     this.http
-      .post(`https://angular03.cursos-dev.com/auth/login`, user)
+      .post(`${environment.pathApi}/auth/login`, user)
       .subscribe((response: IResponse) => {
         this.storage.save('user', JSON.stringify(response.result));
         this.userLogged = true;

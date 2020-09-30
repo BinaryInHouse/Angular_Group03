@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  pathApi: 'https://angular03.cursos-dev.com',
 };

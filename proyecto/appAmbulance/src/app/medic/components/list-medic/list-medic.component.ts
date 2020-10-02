@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MetaDataTableItem } from '../../../interfaces/metadata-table-item.interface';
 import { MedicService } from '../../../services/medic.service';
 import { mappingMedic, MedicDto } from '../../../dtos/medic.dto';
+import { MatDialog } from '@angular/material/dialog';
+import { FormMedicComponent } from '../form-medic/form-medic.component';
 
 @Component({
   selector: 'app-list-medic',
@@ -9,13 +11,7 @@ import { mappingMedic, MedicDto } from '../../../dtos/medic.dto';
   styleUrls: ['./list-medic.component.css'],
 })
 export class ListMedicComponent implements OnInit {
-  dataSource: MedicDto[] = [
-    { name: 'Nombre 01', lastname: 'Apellido 01' },
-    { name: 'Nombre 02', lastname: 'Apellido 02' },
-    { name: 'Nombre 03', lastname: 'Apellido 03' },
-    { name: 'Nombre 04', lastname: 'Apellido 04' },
-    { name: 'Nombre 05', lastname: 'Apellido 05' },
-  ];
+  dataSource: MedicDto[] = [];
 
   metaDataListMedics: MetaDataTableItem[] = [
     {
@@ -25,7 +21,10 @@ export class ListMedicComponent implements OnInit {
     { field: 'lastname', title: 'Apellido' },
   ];
 
-  constructor(private readonly medicService: MedicService) {}
+  constructor(
+    private readonly medicService: MedicService,
+    private readonly dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.medicService.getAll().subscribe(
@@ -34,5 +33,18 @@ export class ListMedicComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+  }
+
+  action(actionButton: string): void {
+    switch (actionButton) {
+      case 'EDITAR':
+        this.dialog.open(FormMedicComponent, {
+          panelClass: 'modal',
+          disableClose: true,
+        });
+        break;
+      case 'ELIMINAR':
+        break;
+    }
   }
 }

@@ -1,0 +1,13 @@
+.modal {
+  width: 40vw;
+}
+
+@media screen and (max-width: "500px") {
+  .model {
+    width: 20pw;
+  }
+}
+
+.modal .mat-dialog-container {
+  padding: 0;
+}

@@ -1,4 +1,5 @@
 <table mat-table [dataSource]="dataSource">
+  <ng-content></ng-content>
   <ng-container *ngFor="let metadata of metaDataTable" [matColumnDef]="metadata.field">
     <th mat-header-cell *matHeaderCellDef>
       {{metadata.title}}
@@ -8,5 +9,5 @@
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="listFields"></tr>
-  <tr mat-row *matRowDef="let row; columns: listFields" class="highline"></tr>
+  <tr mat-row *matRowDef="let row; columns: listFields" class="highline" (click)="action(row)"></tr>
 </table>

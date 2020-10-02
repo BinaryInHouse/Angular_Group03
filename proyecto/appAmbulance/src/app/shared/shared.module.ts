@@ -11,11 +11,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { HeadlineComponent } from './components/headline/headline.component';
 import { TableComponent } from './components/table/table.component';
+import { KeypadComponent } from './components/keypad/keypad.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [HeadlineComponent, TableComponent],
-  imports: [CommonModule, MatTableModule],
+  declarations: [HeadlineComponent, TableComponent, KeypadComponent],
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+  ],
   exports: [
+    MatTooltipModule,
     MatSidenavModule,
     MatToolbarModule,
     FlexLayoutModule,
@@ -25,8 +35,10 @@ import { TableComponent } from './components/table/table.component';
     MatButtonModule,
     MatIconModule,
     MatTableModule,
+    MatDialogModule,
     HeadlineComponent,
     TableComponent,
+    KeypadComponent,
   ],
 })
 export class SharedModule {}

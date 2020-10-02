@@ -15,13 +15,6 @@ export class MedicService {
   ) {}
 
   getAll(): Observable<any> {
-    const tokens = JSON.parse(this.storage.get('user'));
-    const headers = new HttpHeaders({
-      authorization: `Bearer ${tokens.accessToken}`,
-    });
-
-    return this.http
-      .get(`${environment.pathApi}/medics`, { headers })
-      .pipe(pluck('result'));
+    return this.http.get(`${environment.pathApi}/medics`).pipe(pluck('result'));
   }
 }

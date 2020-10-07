@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MetaDataTableItem } from '../../../interfaces/metadata-table-item.interface';
 import { MedicService } from '../../../services/medic.service';
 import { mappingMedic, MedicDto } from '../../../dtos/medic.dto';
-import { MatDialog } from '@angular/material/dialog';
-import { FormMedicComponent } from '../form-medic/form-medic.component';
+import metaDataListMedicsJSON from '../../../../assets/jsons/metadata-medics.json';
 
 @Component({
   selector: 'app-list-medic',
@@ -11,20 +10,13 @@ import { FormMedicComponent } from '../form-medic/form-medic.component';
   styleUrls: ['./list-medic.component.css'],
 })
 export class ListMedicComponent implements OnInit {
+  @Output() onEditMedic = new EventEmitter();
+
   dataSource: MedicDto[] = [];
 
-  metaDataListMedics: MetaDataTableItem[] = [
-    {
-      field: 'name',
-      title: 'Nombre',
-    },
-    { field: 'lastname', title: 'Apellido' },
-  ];
+  metaDataListMedics: MetaDataTableItem[] = metaDataListMedicsJSON;
 
-  constructor(
-    private readonly medicService: MedicService,
-    private readonly dialog: MatDialog
-  ) {}
+  constructor(private readonly medicService: MedicService) {}
 
   ngOnInit(): void {
     this.medicService.getAll().subscribe(
@@ -35,16 +27,15 @@ export class ListMedicComponent implements OnInit {
     );
   }
 
-  action(actionButton: string): void {
+  action(actionButton: string, data: MedicDto): void {
     switch (actionButton) {
       case 'EDITAR':
-        this.dialog.open(FormMedicComponent, {
-          panelClass: 'modal',
-          disableClose: true,
-        });
+        this.onEditMedic.emit(data);
         break;
       case 'ELIMINAR':
         break;
     }
   }
+
+  openForm(): void {}
 }

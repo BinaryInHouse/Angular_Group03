@@ -4,10 +4,10 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row" class="align-right">
-          <button mat-button matTooltip="EDITAR" (click)="action('EDITAR')">
+          <button mat-button matTooltip="EDITAR" (click)="action('EDITAR', row)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-button matTooltip="ELIMINAR" (click)="action('ELIMINAR')">
+          <button mat-button matTooltip="ELIMINAR" (click)="action('ELIMINAR', row)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>

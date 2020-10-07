@@ -1,3 +1,42 @@
-<mat-toolbar color="primary"></mat-toolbar>
+<mat-toolbar color="primary" fxLayout fxLayoutAlign="space-between center">
+  <h2>{{title}}</h2>
+  <div>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
 
-<button mat-button mat-dialog-close>Cerrar</button>
+<mat-dialog-content>
+  <form fxLayout="column" [formGroup]="group">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput name="name" formControlName="name" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Segundo nombre</mat-label>
+      <input type="text" matInput name="surname" formControlName="surname" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Apellido</mat-label>
+      <input type="text" matInput name="lastname" formControlName="lastname" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>CMP</mat-label>
+      <input type="text" matInput name="cmp" formControlName="cmp" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>DNI</mat-label>
+      <input type="text" matInput name="dni" formControlName="dni" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input type="text" matInput name="email" formControlName="email" required>
+    </mat-form-field>
+
+    <div fxLayout fxLayoutAlign="center">
+      <button mat-flat-button color="accent" [disabled]="!group.valid" (click)="save()">Grabar</button>
+      <button mat-button mat-dialog-close>Cerrar</button>
+    </div>
+  </form>
+</mat-dialog-content>

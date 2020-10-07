@@ -1,0 +1,7 @@
+[
+  {
+    "field": "name",
+    "title": "Nombre"
+  },
+  { "field": "lastname", "title": "Apellido" }
+]

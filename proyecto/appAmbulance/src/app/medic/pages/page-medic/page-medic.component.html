@@ -1,3 +1,3 @@
 <app-headline title="Médicos"></app-headline>
 <app-keypad [buttonsKeyPad]="listKeyPad" (clickButton)="action($event)"></app-keypad>
-<app-list-medic></app-list-medic>
+<app-list-medic (onEditMedic)="openForm($event)"></app-list-medic>
